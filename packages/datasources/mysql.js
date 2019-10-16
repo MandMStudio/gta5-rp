@@ -9,9 +9,4 @@ let pool = mysql.createPool({
   database : 'Evg5778rJJ'
 });
 
-pool.query("select * from user where id = 1", function (err, result) {
-  if (err) throw err;
-  console.log(result);
-});
-
 module.exports = pool;
