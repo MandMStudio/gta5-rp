@@ -1,10 +1,17 @@
-var mysql = require('mysql');
+let mysql = require('mysql');
 
-var connection = mysql.createConnection({
-  host     : 'remotemysql.com:3306',
+let pool = mysql.createPool({
+  connectionLimit: 20,
+  host     : 'remotemysql.com',
+  port     : '3306',
   user     : 'Evg5778rJJ',
   password : 'jdL4Wxxr8J',
   database : 'Evg5778rJJ'
 });
 
-module.exports = connection;
+pool.query("select * from user where id = 1", function (err, result) {
+  if (err) throw err;
+  console.log(result);
+});
+
+module.exports = pool;
